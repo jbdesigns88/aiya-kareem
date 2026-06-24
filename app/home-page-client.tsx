@@ -152,10 +152,10 @@ export default function HomePageClient({ catalogTracks }: HomePageClientProps) {
             <div className="station-top">
               <div>
                 <span className="station-label">Catalog</span>
-                <h2>Drag a track</h2>
+                <h2>Drag or tap a track</h2>
               </div>
             </div>
-            <p className="station-copy">Pick a record from Aiya&apos;s collection and drop it onto the player.</p>
+            <p className="station-copy">Pick a record from Aiya&apos;s collection and drag it onto the player, or tap a track on mobile to start the groove.</p>
             <div className="track-list">
               {catalogTracks.map((track) => (
                 <button
@@ -164,6 +164,8 @@ export default function HomePageClient({ catalogTracks }: HomePageClientProps) {
                   className="track-item"
                   draggable
                   onDragStart={(event) => handleDragStart(event, track.id)}
+                  onClick={() => void playTrack(track)}
+                  aria-label={`Play ${track.title}`}
                 >
                   <span>{track.title}</span>
                   <span>{trackDurations[track.id] ?? '--:--'}</span>
@@ -191,7 +193,7 @@ export default function HomePageClient({ catalogTracks }: HomePageClientProps) {
             <div className="player-info">
               <span className="station-label">Vinyl Station</span>
               <h2>{activeTrack ? 'Now spinning' : 'Ready to play'}</h2>
-              <p>{activeTrack ? `${activeTrack.title} is on the platter.` : 'Drag a song from the catalog into the player to start the groove.'}</p>
+              <p>{activeTrack ? `${activeTrack.title} is on the platter.` : 'Drag a song onto the player or tap a track from the catalog to start the groove.'}</p>
               <div className="player-controls" aria-label="Music player controls">
                 <button type="button" className="player-control" onClick={() => seekBy(-10)} disabled={!hasActiveTrack} aria-label="Rewind 10 seconds">
                   <svg viewBox="0 0 24 24" aria-hidden="true">

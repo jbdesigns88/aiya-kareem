@@ -557,7 +557,7 @@ button {
   margin: 48px calc(50% - 50vw);
   background-image: url('/parallax-bg.jpg');
   background-attachment: fixed;
-  background-position: center top;
+  background-position: center 28%;
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
@@ -622,6 +622,12 @@ button {
   .catalog-panel {
     padding: 26px;
   }
+
+  .parallax-section {
+    min-height: 360px;
+    background-attachment: scroll;
+    background-position: center 18%;
+  }
 }
 
 @media (max-width: 720px) {
@@ -666,5 +672,10 @@ button {
   .contact-section {
     flex-direction: column;
     align-items: stretch;
+  }
+
+  .parallax-section {
+    min-height: 300px;
+    background-position: center 14%;
   }
 }
